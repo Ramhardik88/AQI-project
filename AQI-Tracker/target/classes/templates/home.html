@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>AQI- Tracker Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="container">
+<h1>AQI- Tracker Application</h1>
+<table class="table">
+    <tr>
+        <th>month</th>
+        <th>GMT</th>
+        <th>Nitric_Oxide</th>
+        <th>Nitrogen_Dioxide</th>
+        <th>Nitrogen</th>
+        <th>Ozone</th>
+        <th>PM10</th>
+        <th>PM2_5</th>
+        <th>Sulphur_Dioxide</th>
+    </tr>
+    <tr th:each="componentStat : ${componentStats}">
+        <td th:text="${componentStat.month}"></td>
+        <td th:text="${componentStat.GMT}"></td>
+        <td th:text="${componentStat.nitric_Oxide}"></td>
+        <td th:text="${componentStat.nitrogen_Dioxide}"></td>
+        <td th:text="${componentStat.nitrogen}"></td>
+        <td th:text="${componentStat.ozone}"></td>
+        <td th:text="${componentStat.getPM2_5()}"></td>
+        <td th:text="${componentStat.getPM2_5()}"></td>
+        <td th:text="${componentStat.sulphur_Dioxide}"></td>
+    </tr>
+</table>
+</div>
+</body>
+
+</html>
