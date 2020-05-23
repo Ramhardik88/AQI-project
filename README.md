@@ -5,11 +5,7 @@
   <br>
 </h1>
 
-# Maven AQI Calculator
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.thanglequoc/aqi-calculator/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.thanglequoc/aqi-calculator)
-[![Build Status](https://travis-ci.org/ThangLeQuoc/aqi-calculator.svg?branch=master)](https://travis-ci.org/ThangLeQuoc/aqi-calculator)
-[![CodeFactor](https://www.codefactor.io/repository/github/thanglequoc/aqi-calculator/badge)](https://www.codefactor.io/repository/github/thanglequoc/aqi-calculator)
-[![BCH compliance](https://bettercodehub.com/edge/badge/ThangLeQuoc/aqi-calculator?branch=master)](https://bettercodehub.com/)
+
 
 Are you also looking for Node version ? [![npm version](https://badge.fury.io/js/aqi-bot.svg)](https://badge.fury.io/js/aqi-bot)
 ### Foreword
@@ -127,51 +123,13 @@ If the hour doesn't have data, replace missing data in the hour with **-1**
 
 Presume that you want to calculate NowCast AQI for PM10 at **14**, the data array should be
 
-~~~~
-double[] data = { 64, 63, -1, 77, 65, -1, 70, 71, -1, 57, 58, 64 };`
-AQIResult result = calculator.getNowCastAQI(Pollutant.PM10, data);
-result.getAQI();
-~~~~
->56
 
-### Customize AQI Messages
-The default text from AQI result is in **English**. However, you can easily override these messages in your own language. Just download the [template files](https://github.com/ThangLeQuoc/aqi-calculator/tree/master/src/main/resources/AQIresource) and make change on your own
 
 Allowed customized messages resources:
 - General Messages 
 - Sensitive Groups 
 - Specific Messages
 
-**Example**: Override with custom AQI message in German language. Simply done by enable custom message mode, and provide any of the override files path from your project classpath.
-![Sample Settings](https://i.imgur.com/Q9GnIUQ.png)
-
-~~~~
-AQICalculator calculator = AQICalculator.getAQICalculatorInstance();
-
-AQICustomSettings mySettings = new AQICustomSettings()
-	.withCustomMessagesMode(true)
-	.withGeneralMessageResourcePath("AQIResource/custom-aqi-general-messages_de.json")
-	.withSensitiveGroupsResourcePath("AQIResource/custom-aqi-sensitive-groups_de.json")
-	.withSpecificMessageResourcePath("AQIResource/custom-aqi-specific-messages_de.json");
-calculator.applyCustomSettings(mySettings);
-
-AQIResult aqiResult = calculator.getAQI(Pollutant.PM10, 99);
-System.out.println(aqiResult.getCategory());
-System.out.println(aqiResult.getMeaning());
-System.out.println(aqiResult.getSensitiveGroups());
-System.out.println(aqiResult.getHealthEffectsStatements());
-System.out.println(aqiResult.getCautionaryStatements());
-~~~~
-
-Outcome
-```
-Mäßig
-Luftqualität ist akzeptabel; Bei einigen Schadstoffen kann es jedoch zu einer mäßigen Gesundheitsgefährdung für eine sehr kleine Anzahl von Personen kommen, die ungewöhnlich empfindlich auf Luftverschmutzung reagieren
-Am stärksten gefährdet sind Menschen mit Atemwegserkrankungen
-Atmungssymptome bei ungewöhnlich empfindlichen Personen möglich; Mögliche Verschlimmerung von Herz- oder Lungenerkrankungen bei Personen mit kardiopulmonaler Erkrankung und älteren Erwachsenen
-Ungewöhnlich sensible Menschen sollten in Betracht ziehen, längere oder schwere Belastungen zu reduzieren
-```
-I'm not familiar with German, these messages is just the copy-paste result from Google Translate :sheep:
 
 #### General Messages
 General Messages contains the category, meaning and color
@@ -185,9 +143,7 @@ General Messages contains the category, meaning and color
   "meaning": "<<Text in your language>>",
   "color": "<<Text in your language>>"
 }] 
-```
-Download [General Messages Resource File](https://github.com/ThangLeQuoc/aqi-calculator/blob/master/src/main/resources/AQIresource/aqi-general-messages.json) and custom it on your own. Then set this file path with  `withGeneralMessageResourcePath(<path_to_your_file>)`
-```
+
 AQICustomSettings mySettings = new AQICustomSettings()
 	.withCustomMessagesMode(true)
 	.withGeneralMessageResourcePath("AQIResource/custom-aqi-general-messages_de.json");
@@ -200,9 +156,7 @@ Sensitive Groups File contains list of pollutant's sensitive groups
     "code": "PM2.5",
     "sensitiveGroups": "<<Text in your language>>"
 }]
-```
-Download [Sensitive Groups Resource File](https://github.com/ThangLeQuoc/aqi-calculator/blob/master/src/main/resources/AQIresource/aqi-sensitive-groups.json) and custom it on your own. Then set this file path with `withSensitiveGroupsResourcePath(<path_to_your_file>)`
-```
+
 AQICustomSettings mySettings = new AQICustomSettings()
 	.withCustomMessagesMode(true)
 	.withSensitiveGroupsResourcePath("AQIResource/custom-aqi-sensitive-groups_de.json");
