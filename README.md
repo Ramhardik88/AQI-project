@@ -31,6 +31,7 @@ This project is intended to community target for free use. The author is not ass
 | NO2     |  Nitrogen Dioxide  | ppb| :heavy_check_mark: | :heavy_check_mark:| :x:|:heavy_check_mark:|:heavy_check_mark:|
 
 ## Installation
+IDE used:IntelliJ IDEA
 ### Using Maven Dependency
 
 Or for other build tools like Gradle, SBT, Ivy,.. you may find it on [Maven Central Repository](https://mvnrepository.com/artifact/com.github.thanglequoc/aqi-calculator/1.3.1)
